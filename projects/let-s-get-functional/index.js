@@ -41,22 +41,45 @@ var femaleCount = function(array) {
 return output.length;
 };
 
-var oldestCustomer = function(array){
-    let outputArr = []
-    let oldest = customers[0]
-    for (let i = 0; i < array.length; i++){
-        if (array[i].age > oldest.age){
-            oldest = customers[i]
+var oldestCustomer = function(array) {
+    var oldest = array[0];
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].age > oldest.age) {
+            oldest = array[i];
         }
-    } return oldest
+    }
+    return oldest.name;
+};
 
-}
+    var youngestCustomer = function(array) {
+        var youngest = array[0];
+        for (var i = 0; i < array.length; i++) {
+            if (array[i].age < youngest.age) {
+                youngest = array[i];
+            }
+        }
+        return youngest.name;
+    };
 
-    var youngestCustomer;
+var averageBalance = function(array) {
+    var totalBalance = array.reduce(function(sum, customer) {
+        // Remove '$' and ',' from balance string and convert to float
+        var balance = parseFloat(customer.balance.replace(/[$,]/g, ''));
+        return sum + balance;
+    }, 0);
+    return totalBalance / array.length;
+};
 
-var averageBalance;
-
-var firstLetterCount;
+var firstLetterCount = function(array, letter) {
+    //count customers whose names start with specific letter
+    var count = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].name.charAt(0).toLowerCase() === letter.toLowerCase()) {
+            count++;
+        }
+    }
+    return count;
+};
 
 var friendFirstLetterCount;
 
